@@ -91,5 +91,5 @@ CMD ["./start.sh"]
 
 
 # Poorten openen
-EXPOSE 80 443 22
+EXPOSE 80
 
