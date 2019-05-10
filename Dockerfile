@@ -56,6 +56,7 @@ RUN apt-get install -y \
     php7.3-zip \
     php7.3-fpm \
     php-memcached \
+    composer \
     php-memcache \
     php-apcu \
     libpcre3-dev \
@@ -84,7 +85,12 @@ RUN mkdir -p /run/php && \
  
 # Volumes
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
- 
+
+# Setup
+COPY setup.sh /setup.sh
+CMD ["./setup.sh"]
+
+
 # Services starten
 COPY start.sh /start.sh
 CMD ["./start.sh"]
