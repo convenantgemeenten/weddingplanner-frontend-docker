@@ -70,9 +70,6 @@ RUN apt-get install -y \
 RUN apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Memory usage limiteren voor stabiliteit
-CMD ulimit -n 1536
-
 # Configuratie van nginx, PHP-FPM en supervisord
 COPY nginx_site_default /etc/nginx/sites-available/default
 RUN sed -i -e 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/fpm/php.ini && \
@@ -85,7 +82,6 @@ RUN mkdir -p /run/php && \
  
 # Volumes
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
-
 
 # Setup en services starten
 COPY setup.sh /setup.sh
