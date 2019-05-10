@@ -86,14 +86,11 @@ RUN mkdir -p /run/php && \
 # Volumes
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
 
-# Setup
+
+# Setup en services starten
 COPY setup.sh /setup.sh
-CMD ["./setup.sh"]
-
-
-# Services starten
 COPY start.sh /start.sh
-CMD ["./start.sh"]
+CMD ["./setup.sh", "./start.sh"]
 
 
 # Poorten openen
