@@ -1,7 +1,8 @@
 #!/bin/bash
 
 cd /var/www/html
-sudo -u www-data composer install
+export COMPOSER_ALLOW_SUPERUSER=1 # liever niet, maar de demo moet wel even werken dadelijk....
+composer install
 if [ ! -f ".env" ]; then
     mv .env.example .env
     php artisan key:generate
