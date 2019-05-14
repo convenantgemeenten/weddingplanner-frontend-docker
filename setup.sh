@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /var/www/html
-composer install --no-plugins --no-scripts
+sudo -u www-data composer install
 if [ ! -f ".env" ]; then
     mv .env.example .env
     php artisan key:generate
