@@ -86,7 +86,8 @@ VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/v
 # Setup en services starten
 COPY setup.sh /setup.sh
 COPY start.sh /start.sh
-CMD ["./setup.sh", "./start.sh"]
+CMD ["./setup.sh"]
+CMD ["./start.sh"]
 
 
 # Poorten openen
